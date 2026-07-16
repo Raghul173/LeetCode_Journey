@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Solution 
 {
     public int removeDuplicates(int[] nums) 
@@ -7,15 +9,17 @@ class Solution
             return 0;
         }
         
-        int i = 0; 
-        for (int j = 1; j < nums.length; j++) 
-        { 
-            if (nums[j] != nums[i]) 
+        Arrays.sort(nums); 
+        int k = 1; 
+
+        for (int i = 1; i < nums.length; i++) 
+        {
+            if (nums[i] != nums[k - 1]) 
             {
-                i++;
-                nums[i] = nums[j];
+                nums[k] = nums[i]; 
+                k++; 
             }
         }
-        return i + 1;
+        return k;
     }
 }
